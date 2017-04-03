@@ -42,8 +42,8 @@ coreo_uni_util_jsrunner "cis3-rollup" do
   function <<-'EOH'
 
 const ruleMetaJSON = {
-    'monitor-route-table-changes': COMPOSITE::coreo_aws_rule.monitor-route-table-changes.inputs,
-    'monitor-vpc-changes': COMPOSITE::coreo_aws_rule.monitor-vpc-changes.inputs
+    'monitor-route-table-changes': COMPOSITE::coreo_aws_rule,
+    'monitor-vpc-changes': COMPOSITE::coreo_aws_rule
 };
 
 callback(ruleMetaJSON);
