@@ -102,7 +102,7 @@ function setTableAndSuppression() {
   coreoExport('table', JSON.stringify(table));
   coreoExport('suppression', JSON.stringify(suppression));
 
-  let alertListToJSON = "${AUDIT_AWS_EC2_ALERT_LIST}";
+  let alertListToJSON = "${AUDIT_AWS_S3_ALERT_LIST}";
   let alertListArray = alertListToJSON.replace(/'/g, '"');
   json_input['alert list'] = alertListArray || [];
   json_input['suppression'] = suppression || null;
@@ -133,9 +133,9 @@ function createConfig(argForConfig) {
 }
 
 const NO_OWNER_EMAIL = "mihail@cloudcoreo.com";
-const OWNER_TAG = "${AUDIT_AWS_EC2_OWNER_TAG}";
-const ALLOW_EMPTY = "${AUDIT_AWS_EC2_ALLOW_EMPTY}";
-const SEND_ON = "${AUDIT_AWS_EC2_SEND_ON}";
+const OWNER_TAG = "${AUDIT_AWS_S3_OWNER_TAG}";
+const ALLOW_EMPTY = "${AUDIT_AWS_S3_ALLOW_EMPTY}";
+const SEND_ON = "${AUDIT_AWS_S3_SEND_ON}";
 const SHOWN_NOT_SORTED_VIOLATIONS_COUNTER = false;
 let table_input = json_input['table'];
 let suppression_input = json_input['suppression'];
