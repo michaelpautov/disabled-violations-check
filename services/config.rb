@@ -202,16 +202,16 @@ callback(textRollup);
 end
 
 coreo_uni_util_notify "advise-s3-to-tag-values" do
-  action((("${AUDIT_AWS_S3_ALERT_RECIPIENT}".length > 0)) ? :notify : :nothing)
+  action((("mihail@cloudcoreo.com".length > 0)) ? :notify : :nothing)
   notifiers 'COMPOSITE::coreo_uni_util_jsrunner.tags-to-notifiers-array-s3.return'
 end
 
 
 coreo_uni_util_notify "advise-s3-rollup" do
-  action((("${AUDIT_AWS_S3_ALERT_RECIPIENT}".length > 0) and (! "${AUDIT_AWS_S3_OWNER_TAG}".eql?("NOT_A_TAG"))) ? :notify : :nothing)
+  action((("mihail@cloudcoreo.com".length > 0) and (! "${AUDIT_AWS_S3_OWNER_TAG}".eql?("NOT_A_TAG"))) ? :notify : :nothing)
   type 'email'
-  allow_empty ${AUDIT_AWS_S3_ALLOW_EMPTY}
-  send_on '${AUDIT_AWS_S3_SEND_ON}'
+  allow_empty true
+  send_on 'always'
   payload '
 composite name: PLAN::stack_name
 plan name: PLAN::name
@@ -220,6 +220,6 @@ COMPOSITE::coreo_uni_util_jsrunner.tags-rollup-s3.return
   '
   payload_type 'text'
   endpoint ({
-      :to => '${AUDIT_AWS_S3_ALERT_RECIPIENT}', :subject => 'CloudCoreo s3 rule results on PLAN::stack_name :: PLAN::name'
+      :to => 'mihail@cloudcoreo.com', :subject => 'CloudCoreo s3 rule results on PLAN::stack_name :: PLAN::name'
   })
 end
